@@ -45,7 +45,7 @@ You can expose port 5000 on the container directly to the internet if you want, 
 
 https://mozilla-services.readthedocs.io/en/latest/howtos/run-sync-1.5.html
 
-I serve this through my [le-docker](https://github/snw35/le-docker) frontend proxy system to have working SSL with letsencrypt certificates automatically generated and renewed for me. This gives you free HTTP->HTTPS redirection too.
+I serve this through my [le-docker](https://github.com/snw35/le-docker) frontend proxy system to have working SSL with letsencrypt certificates automatically generated and renewed for me. This gives you free HTTP->HTTPS redirection too.
 
 ### Configure your devices
 

@@ -6,6 +6,7 @@ RUN apk --update --no-cache add \
     libstdc++ \
     libffi \
     libssl1.1 \
+    libpq \
   && pip install --no-cache-dir --upgrade pip \
   && mkdir /data \
   && addgroup -g 1001 app \

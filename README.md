@@ -1,6 +1,8 @@
 # ffsync
 
-Firefox Sync Server Docker Container.
+ * [Travis CI: ![Build Status](https://travis-ci.org/snw35/ffsync.svg?branch=master)](https://travis-ci.org/snw35/ffsync)
+
+Firefox Sync Server Container.
 
 This container image dramatically simplifies the deployment of a self-hosted Firefox Sync Server. It includes built-in MySQL/MariaDB and Postgres database support and runs with a default sqlite configuration out of the box.
 
@@ -75,12 +77,14 @@ NOTE: You may have noticed that we still use Mozilla's servers to sign up and au
 
 If the "identity.sync.tokenserver.uri" setting is ever reset while you are signed in to your Firefox account, e.g if you do a 'refresh' in Firefox when it prompts you to, then Mozilla's server will be re-inserted there and all of your data will silently sync in the background to them, defeating the whole exercise.
 
-To ensure that doesn't happen, you can (in Linux) create the file `/etc/firefox/pref/prefs.js` with the following content:
+To ensure that doesn't happen, you can create a user preferences file in Firefox's install directory. In Linux, this will look something like `/usr/lib/firefox/browser/defaults/preferences/user.js`, and in Windows it will be under Program Files.
+
+Put the following content in the user.js file:
 ```
 user_pref("identity.sync.tokenserver.uri", "https://your.domain/token/1.0/sync/1.5");
 ```
 
-This will auto-apply the sync server setting to all instances of Firefox started on that machine. It's also possible to do this on Windows by placing the same file in the user profile, or the Firefox profile.
+This will auto-apply the sync server setting to all instances of Firefox started on that machine.
 
 
 ## Why Use This?

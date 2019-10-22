@@ -1,8 +1,6 @@
-FROM alpine:3.10
+FROM python:2.7.16-alpine3.10
 
 RUN apk --update --no-cache add \
-    python2 \
-    py2-pip \
     libstdc++ \
     libffi \
     libssl1.1 \
@@ -23,7 +21,6 @@ ENV FFSYNC_FILENAME $FFSYNC_VERSION.tar.gz
 
 RUN apk --update --no-cache add --virtual build.deps \
     g++ \
-    python2-dev \
     build-base \
     libffi-dev \
     libressl-dev \

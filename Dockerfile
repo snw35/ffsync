@@ -1,4 +1,4 @@
-FROM python:2.7.16-alpine3.10
+FROM python:2.7.17-alpine3.10
 
 RUN apk --update --no-cache add \
     libstdc++ \

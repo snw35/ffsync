@@ -14,16 +14,20 @@ ENV LANG C.UTF-8
 
 WORKDIR /opt
 
-ENV FFSYNC_VERSION 1.8.0
-ENV FFSYNC_SHA256 728206bcffec7a305e97e7cd4d465b3fa56f39f8e1fd55d98e49a866016d61e0
+ENV FFSYNC_VERSION 1.9.0
+ENV FFSYNC_SHA256 299aef81b01bdcbd0e3cd9af00d83471858743a432a6395b1027407943eb35e3
 ENV FFSYNC_URL https://github.com/mozilla-services/syncserver/archive
 ENV FFSYNC_FILENAME $FFSYNC_VERSION.tar.gz
 
 RUN apk --update --no-cache add --virtual build.deps \
-    g++ \
     build-base \
+    g++ \
     libffi-dev \
-    libressl-dev \
+    mariadb-dev \
+    musl-dev \
+    ncurses-dev \
+    openssl-dev \
+    bash \
     postgresql-dev \
   && pip install --no-cache-dir --upgrade \
     psycopg2 \
@@ -46,8 +50,6 @@ RUN apk --update --no-cache add --virtual build.deps \
   && rm -rf /root/.cache \
   && ln -s /opt/syncserver-$FFSYNC_VERSION /opt/syncserver \
   && mv /opt/syncserver/syncserver.ini /data/ \
-  && mv /opt/syncserver/syncserver.db /data/ \
-  && ln -s /data/syncserver.db /opt/syncserver/syncserver.db \
   && ln -s /data/syncserver.ini /opt/syncserver/syncserver.ini \
   && chown -R app:app /data
 

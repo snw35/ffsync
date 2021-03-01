@@ -1,0 +1,8 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "new_ver.json"
+
+[FFSYNC]
+source = "github"
+github = "mozilla-services/syncserver"
+use_max_tag = true

@@ -1,6 +1,6 @@
 # ffsync
 
- * [Travis CI: ![Build Status](https://travis-ci.org/snw35/ffsync.svg?branch=master)](https://travis-ci.org/snw35/ffsync)
+ * [Travis CI: ![Build Status](https://travis-ci.com/snw35/ffsync.svg?branch=master)](https://travis-ci.com/github/snw35/ffsync)
 
 Firefox Sync Server Container.
 

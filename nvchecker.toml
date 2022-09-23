@@ -2,6 +2,11 @@
 oldver = "old_ver.json"
 newver = "new_ver.json"
 
+[BASE]
+source = "container"
+container = "library/python"
+include_regex = "2\\.\\d+\\.?\\d+-alpine\\d\\.\\d+"
+
 [FFSYNC]
 source = "github"
 github = "mozilla-services/syncserver"

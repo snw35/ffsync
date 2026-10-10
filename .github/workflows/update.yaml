@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+# Thin caller of the shared container-update workflow. To reuse in another repo,
+# change only the values marked "<--" below (and the branch names if needed).
+
+on:
+  push:
+    branches: [ "master", "main", "mainline" ]
+  pull_request:
+    branches: [ "master", "main", "mainline" ]
+  schedule:
+    - cron: '05 15 * * 0'
+  workflow_dispatch:
+
+jobs:
+  container-update:
+    # One run at a time per repo; `queue: max` keeps every waiting run instead of
+    # replacing the older one.
+    concurrency:
+      group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.run_id) || format('container-update-{0}', github.repository) }}
+      queue: max
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      packages: write
+    uses: snw35/cicd/.github/workflows/container-update.yaml@main
+    with:
+      WORKDIRS: '["."]'   # <-- folders holding a Dockerfile; '["."]' for a root Dockerfile
+      IMAGE_TAG: FFSYNC_VERSION   # <-- Dockerfile ENV that holds the main software version
+    secrets: inherit

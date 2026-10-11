@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "data": {
+    "BASE": {
+      "version": "2.7.18-alpine3.11"
+    },
+    "FFSYNC": {
+      "version": "1.9.1",
+      "gitref": "refs/tags/1.9.1",
+      "revision": "040d642d5740f80cd54fb22fda5ea75296f7c50c",
+      "url": "https://github.com/mozilla-services/syncserver/releases/tag/1.9.1"
+    }
+  }
+}
